@@ -144,7 +144,7 @@ BEGIN
         `guid`
     )
     SELECT
-        geg.event AS eventEntry,
+        LEAST(GREATEST(geg.event, -128), 127) AS eventEntry,
         geg.guid
     FROM classicmangos.game_event_gameobject geg
     INNER JOIN tmp_classic_go_guids g ON g.guid = geg.guid;
