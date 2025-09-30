@@ -45,18 +45,16 @@ BEGIN
     CREATE TABLE barracksworld.game_event_creature LIKE trinityworld.game_event_creature;
     INSERT INTO barracksworld.game_event_creature SELECT * FROM trinityworld.game_event_creature;
 
-    /* identify classic guids, entries, and model display identifiers for Azeroth (maps 0 and 1) */
+    /* identify every guid, entry, and model display identifier present in classicmangos */
     DROP TEMPORARY TABLE IF EXISTS tmp_classic_creature_guids;
     CREATE TEMPORARY TABLE tmp_classic_creature_guids
     SELECT DISTINCT guid
-    FROM classicmangos.creature
-    WHERE map IN (0, 1);
+    FROM classicmangos.creature;
 
     DROP TEMPORARY TABLE IF EXISTS tmp_classic_creature_entries;
     CREATE TEMPORARY TABLE tmp_classic_creature_entries
-    SELECT DISTINCT id AS entry
-    FROM classicmangos.creature
-    WHERE map IN (0, 1);
+    SELECT DISTINCT Entry AS entry
+    FROM classicmangos.creature_template;
 
     DROP TEMPORARY TABLE IF EXISTS tmp_classic_model_ids;
     CREATE TEMPORARY TABLE tmp_classic_model_ids
@@ -128,8 +126,7 @@ BEGIN
         '' AS ScriptName,
         0 AS VerifiedBuild
     FROM classicmangos.creature c
-    LEFT JOIN classicmangos.creature_template ct ON ct.Entry = c.id
-    WHERE c.map IN (0, 1);
+    LEFT JOIN classicmangos.creature_template ct ON ct.Entry = c.id;
 
     DELETE FROM barracksworld.creature_addon
     WHERE guid IN (SELECT guid FROM tmp_classic_creature_guids);
