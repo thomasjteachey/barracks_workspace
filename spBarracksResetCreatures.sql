@@ -1,5 +1,7 @@
 DELIMITER $$
 
+DROP PROCEDURE IF EXISTS `spBarracksResetCreatures`$$
+
 CREATE DEFINER=`brokilodeluxe`@`%` PROCEDURE `spBarracksResetCreatures`()
 BEGIN
     DECLARE v_old_foreign_key_checks INT DEFAULT @@FOREIGN_KEY_CHECKS;
@@ -75,30 +77,30 @@ BEGIN
     WHERE guid IN (SELECT guid FROM tmp_classic_creature_guids);
 
     INSERT INTO barracksworld.creature (
-        guid,
-        id,
-        map,
-        zoneId,
-        areaId,
-        spawnMask,
-        phaseMask,
-        modelid,
-        equipment_id,
-        position_x,
-        position_y,
-        position_z,
-        orientation,
-        spawntimesecs,
-        wander_distance,
-        currentwaypoint,
-        curhealth,
-        curmana,
-        MovementType,
-        npcflag,
-        unit_flags,
-        dynamicflags,
-        ScriptName,
-        VerifiedBuild
+        `guid`,
+        `id`,
+        `map`,
+        `zoneId`,
+        `areaId`,
+        `spawnMask`,
+        `phaseMask`,
+        `modelid`,
+        `equipment_id`,
+        `position_x`,
+        `position_y`,
+        `position_z`,
+        `orientation`,
+        `spawntimesecs`,
+        `wander_distance`,
+        `currentwaypoint`,
+        `curhealth`,
+        `curmana`,
+        `MovementType`,
+        `npcflag`,
+        `unit_flags`,
+        `dynamicflags`,
+        `ScriptName`,
+        `VerifiedBuild`
     )
     SELECT
         c.guid,
@@ -133,18 +135,18 @@ BEGIN
     WHERE guid IN (SELECT guid FROM tmp_classic_creature_guids);
 
     INSERT INTO barracksworld.creature_addon (
-        guid,
-        path_id,
-        mount,
-        MountCreatureID,
-        StandState,
-        AnimTier,
-        VisFlags,
-        SheathState,
-        PvPFlags,
-        emote,
-        visibilityDistanceType,
-        auras
+        `guid`,
+        `path_id`,
+        `mount`,
+        `MountCreatureID`,
+        `StandState`,
+        `AnimTier`,
+        `VisFlags`,
+        `SheathState`,
+        `PvPFlags`,
+        `emote`,
+        `visibilityDistanceType`,
+        `auras`
     )
     SELECT
         ca.guid,
@@ -166,8 +168,8 @@ BEGIN
     WHERE guid IN (SELECT guid FROM tmp_classic_creature_guids);
 
     INSERT INTO barracksworld.game_event_creature (
-        eventEntry,
-        guid
+        `eventEntry`,
+        `guid`
     )
     SELECT
         gec.`event`,
@@ -179,64 +181,64 @@ BEGIN
     WHERE entry IN (SELECT entry FROM tmp_classic_creature_entries);
 
     INSERT INTO barracksworld.creature_template (
-        entry,
-        difficulty_entry_1,
-        difficulty_entry_2,
-        difficulty_entry_3,
-        KillCredit1,
-        KillCredit2,
-        modelid1,
-        modelid2,
-        modelid3,
-        modelid4,
-        name,
-        subname,
-        IconName,
-        gossip_menu_id,
-        minlevel,
-        maxlevel,
-        exp,
-        faction,
-        npcflag,
-        speed_walk,
-        speed_run,
-        scale,
-        rank,
-        dmgschool,
-        BaseAttackTime,
-        RangeAttackTime,
-        BaseVariance,
-        RangeVariance,
-        unit_class,
-        unit_flags,
-        unit_flags2,
-        dynamicflags,
-        family,
-        type,
-        type_flags,
-        lootid,
-        pickpocketloot,
-        skinloot,
-        PetSpellDataId,
-        VehicleId,
-        mingold,
-        maxgold,
-        AIName,
-        MovementType,
-        HoverHeight,
-        HealthModifier,
-        ManaModifier,
-        ArmorModifier,
-        DamageModifier,
-        ExperienceModifier,
-        RacialLeader,
-        movementId,
-        RegenHealth,
-        mechanic_immune_mask,
-        spell_school_immune_mask,
-        flags_extra,
-        ScriptName,
-        VerifiedBuild
+        `entry`,
+        `difficulty_entry_1`,
+        `difficulty_entry_2`,
+        `difficulty_entry_3`,
+        `KillCredit1`,
+        `KillCredit2`,
+        `modelid1`,
+        `modelid2`,
+        `modelid3`,
+        `modelid4`,
+        `name`,
+        `subname`,
+        `IconName`,
+        `gossip_menu_id`,
+        `minlevel`,
+        `maxlevel`,
+        `exp`,
+        `faction`,
+        `npcflag`,
+        `speed_walk`,
+        `speed_run`,
+        `scale`,
+        `rank`,
+        `dmgschool`,
+        `BaseAttackTime`,
+        `RangeAttackTime`,
+        `BaseVariance`,
+        `RangeVariance`,
+        `unit_class`,
+        `unit_flags`,
+        `unit_flags2`,
+        `dynamicflags`,
+        `family`,
+        `type`,
+        `type_flags`,
+        `lootid`,
+        `pickpocketloot`,
+        `skinloot`,
+        `PetSpellDataId`,
+        `VehicleId`,
+        `mingold`,
+        `maxgold`,
+        `AIName`,
+        `MovementType`,
+        `HoverHeight`,
+        `HealthModifier`,
+        `ManaModifier`,
+        `ArmorModifier`,
+        `DamageModifier`,
+        `ExperienceModifier`,
+        `RacialLeader`,
+        `movementId`,
+        `RegenHealth`,
+        `mechanic_immune_mask`,
+        `spell_school_immune_mask`,
+        `flags_extra`,
+        `ScriptName`,
+        `VerifiedBuild`
     )
     SELECT
         ct.Entry,
@@ -304,18 +306,18 @@ BEGIN
     WHERE entry IN (SELECT entry FROM tmp_classic_creature_entries);
 
     INSERT INTO barracksworld.creature_template_addon (
-        entry,
-        path_id,
-        mount,
-        MountCreatureID,
-        StandState,
-        AnimTier,
-        VisFlags,
-        SheathState,
-        PvPFlags,
-        emote,
-        visibilityDistanceType,
-        auras
+        `entry`,
+        `path_id`,
+        `mount`,
+        `MountCreatureID`,
+        `StandState`,
+        `AnimTier`,
+        `VisFlags`,
+        `SheathState`,
+        `PvPFlags`,
+        `emote`,
+        `visibilityDistanceType`,
+        `auras`
     )
     SELECT
         cta.entry,
@@ -337,12 +339,12 @@ BEGIN
     WHERE CreatureID IN (SELECT entry FROM tmp_classic_creature_entries);
 
     INSERT INTO barracksworld.creature_equip_template (
-        CreatureID,
-        ID,
-        ItemID1,
-        ItemID2,
-        ItemID3,
-        VerifiedBuild
+        `CreatureID`,
+        `ID`,
+        `ItemID1`,
+        `ItemID2`,
+        `ItemID3`,
+        `VerifiedBuild`
     )
     SELECT
         cet.entry,
@@ -358,16 +360,16 @@ BEGIN
     WHERE Entry IN (SELECT entry FROM tmp_classic_creature_entries);
 
     INSERT INTO barracksworld.creature_loot_template (
-        Entry,
-        Item,
-        Reference,
-        Chance,
-        QuestRequired,
-        LootMode,
-        GroupId,
-        MinCount,
-        MaxCount,
-        Comment
+        `Entry`,
+        `Item`,
+        `Reference`,
+        `Chance`,
+        `QuestRequired`,
+        `LootMode`,
+        `GroupId`,
+        `MinCount`,
+        `MaxCount`,
+        `Comment`
     )
     SELECT
         clt.entry AS Entry,
@@ -387,11 +389,11 @@ BEGIN
     WHERE DisplayID IN (SELECT displayId FROM tmp_classic_model_ids);
 
     INSERT INTO barracksworld.creature_model_info (
-        DisplayID,
-        BoundingRadius,
-        CombatReach,
-        Gender,
-        DisplayID_Other_Gender
+        `DisplayID`,
+        `BoundingRadius`,
+        `CombatReach`,
+        `Gender`,
+        `DisplayID_Other_Gender`
     )
     SELECT
         cmi.modelid AS DisplayID,
@@ -406,16 +408,16 @@ BEGIN
     WHERE creature_id IN (SELECT entry FROM tmp_classic_creature_entries);
 
     INSERT INTO barracksworld.creature_onkill_reputation (
-        creature_id,
-        RewOnKillRepFaction1,
-        RewOnKillRepFaction2,
-        MaxStanding1,
-        IsTeamAward1,
-        RewOnKillRepValue1,
-        MaxStanding2,
-        IsTeamAward2,
-        RewOnKillRepValue2,
-        TeamDependent
+        `creature_id`,
+        `RewOnKillRepFaction1`,
+        `RewOnKillRepFaction2`,
+        `MaxStanding1`,
+        `IsTeamAward1`,
+        `RewOnKillRepValue1`,
+        `MaxStanding2`,
+        `IsTeamAward2`,
+        `RewOnKillRepValue2`,
+        `TeamDependent`
     )
     SELECT
         cok.creature_id,

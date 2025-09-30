@@ -1,5 +1,7 @@
 DELIMITER $$
 
+DROP PROCEDURE IF EXISTS `spBarracksResetQuests`$$
+
 CREATE DEFINER=`brokilodeluxe`@`%` PROCEDURE `spBarracksResetQuests`()
 BEGIN
     DECLARE v_old_foreign_key_checks INT DEFAULT @@FOREIGN_KEY_CHECKS;
