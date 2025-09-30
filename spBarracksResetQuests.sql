@@ -150,7 +150,7 @@ BEGIN
         qt.RequiredMaxRepFaction AS RequiredFactionId2,
         qt.RequiredMinRepValue AS RequiredFactionValue1,
         qt.RequiredMaxRepValue AS RequiredFactionValue2,
-        qt.NextQuestId AS RewardNextQuest,
+        GREATEST(qt.NextQuestId, 0) AS RewardNextQuest,
         0 AS RewardXPDifficulty,
         qt.RewOrReqMoney AS RewardMoney,
         qt.RewMoneyMaxLevel AS RewardBonusMoney,
