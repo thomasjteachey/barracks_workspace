@@ -1,7 +1,8 @@
 CREATE DEFINER=`brokilodeluxe`@`%` PROCEDURE `spBarracksMakeEverything`()
 BEGIN
-	call spBarracksResetCreatures;
-	call spBarracksResetQuests;
-    call spBarracksMakeTrainers;
-    call spBarracksMakeItems;
+    CALL spBarracksResetCreatures;
+    CALL spBarracksResetGameobjects;
+    CALL spBarracksResetQuests;
+    CALL spBarracksMakeTrainers;
+    CALL spBarracksMakeItems;
 END
